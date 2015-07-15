@@ -1,4 +1,4 @@
-{
+﻿{
   "name": "quiz",
   "version": "0.0.0",
   "private": true,
@@ -8,6 +8,9 @@
    "engines": {
     "node": "0.10.x",
     "npm": "1.4.x"
+  },
+  "devdependencies": {
+    "sqlite3": "^3.0.4"
   },
   "dependencies": {
     "body-parser": "~1.8.1",
