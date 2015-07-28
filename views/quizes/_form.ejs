@@ -1,6 +1,19 @@
+﻿<script>function changeTema(sel){
+var i;
+for (i=0;i<sel.length;i++) {if(sel[i].selected){window.document.forms[0]["quiz[tema]"].value=sel[i].value;}};
+}</script>
 <label for="preg" class="rem">Pregunta:</label>
-<input type=text" id="preg" name="quiz[pregunta]" value="<%=quiz.pregunta%>"/><p>
+<input type="text" id="preg" name="quiz[pregunta]" value="<%=quiz.pregunta%>"/><p>
 <label for="resp" class="rem">Respuesta:</label>
-<input type=text" id="resp" name="quiz[respuesta]" value="<%=quiz.respuesta%>"/><p>
+<input type="text" id="resp" name="quiz[respuesta]" value="<%=quiz.respuesta%>"/><p>
+<label for="resp" class="rem">Tema:</label>
+<select name="temaSelect" onChange="changeTema(this);">
+  <option value="otro" <%=(quiz.tema==="otro")?"selected":"" %> >Otro</option>
+  <option value="humanidades" <%=(quiz.tema==="humanidades")?"selected":"" %> >Humanidades</option>
+  <option value="ocio"  <%=(quiz.tema==="ocio")?"selected":"" %>>Ocio</option>
+  <option value="ciencia" <%=(quiz.tema==="ciencia")?"selected":"" %>>Ciencia</option>
+  <option value="tecnologia" <%=(quiz.tema==="tecnologia")?"selected":"" %>>Tecnología</option>
+</select>
+<input type="hidden" id="resp" name="quiz[tema]" value="<%=(quiz.tema || "otro")%>"/><p>
 <a href="/quizes"><button type="button">Cancelar</button></a>
 <input type="submit" value="Guardar">
