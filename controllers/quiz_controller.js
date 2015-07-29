@@ -41,7 +41,7 @@ exports.edit=function(req,res){
 exports.update = function(req, res) {
   req.quiz.pregunta  = req.body.quiz.pregunta;
   req.quiz.respuesta = req.body.quiz.respuesta;
- req.quiz.tema = req.body.quiz.tema;
+  req.quiz.tema = req.body.quiz.tema;
  
  var errors =  req.quiz.validate();
  
