@@ -47,6 +47,36 @@ app.use(function(req, res, next) {
   next();
 });
 
+
+app.use(function(req, res, next) {
+
+  
+  // Si había usuario y teníamos fecha expiración.
+  if ( (req.session.expires) && (req.session.user) ) {
+  
+			if ( (req.session.expires) <=  Date.now()){
+					delete req.session.user;
+					var errores=new Array();
+					errores[0]={message:"Session expirada. Autentifiquese de nuevo."};
+					 res.render('sessions/new', {errors: errores});
+		   
+		  }
+  }
+  
+  else {
+	// no había expiración, la ponemos
+	if   (req.session.user)  { //solo si hay session
+				req.session.expires =  Date.now() + (2 *60000);
+		}
+  }
+
+  // Hacer visible req.session en las vistas
+  res.locals.session = req.session;
+  next();
+});
+
+
+
 app.use('/', routes);
 
 
